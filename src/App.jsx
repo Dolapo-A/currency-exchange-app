@@ -90,8 +90,8 @@ function App() {
 	};
 
 	return (
-		<>
-			{/* Error Banner - Placed outside the main container */}
+		<div className="flex flex-col min-h-screen">
+			{/* Error Banner */}
 			{connectionError && (
 				<div className="fixed inset-x-0 top-0 bg-red-500 text-white p-3 text-center z-50">
 					<p className="text-sm">
@@ -101,7 +101,18 @@ function App() {
 				</div>
 			)}
 
-			<div className="max-w-lg mx-auto p-4 bg-white min-h-screen">
+			{/* Add Navigation Bar */}
+			<nav className="w-full bg-white border-b border-gray-200 mb-4">
+				<div className="max-w-lg mx-auto py-4">
+					<img
+						src="/logo.svg"
+						alt="Currency Exchange Logo"
+						className="h-8 mx-auto"
+					/>
+				</div>
+			</nav>
+
+			<div className="max-w-lg mx-auto p-4 bg-white flex-grow">
 				{/* Title */}
 				<h1 className="text-2xl font-semibold mb-2">Convert money</h1>
 				<p className="text-gray-600 mb-6">
@@ -214,7 +225,30 @@ function App() {
 					selectedCurrency={toCurrency}
 				/>
 			</div>
-		</>
+
+			{/* Footer */}
+			<footer className="bg-gray-100 text-center py-4">
+				<p className="text-sm">Developed by Dolapo Araoye</p>
+				<div className="flex justify-center space-x-4 mt-2">
+					<a
+						href="https://github.com/Dolapo-A"
+						target="_blank"
+						rel="noopener noreferrer"
+						className="text-blue-600 hover:underline"
+					>
+						GitHub
+					</a>
+					<a
+						href="https://linkedin.com/in/dolapo-araoye-86ba31219/"
+						target="_blank"
+						rel="noopener noreferrer"
+						className="text-blue-600 hover:underline"
+					>
+						LinkedIn
+					</a>
+				</div>
+			</footer>
+		</div>
 	);
 }
 
