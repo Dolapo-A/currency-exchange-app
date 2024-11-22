@@ -185,7 +185,7 @@ function App() {
 						</button>
 						<span className="text-2xl text-gray-400">
 							{convertedAmount
-								? `${convertedAmount.toFixed(4)} ${toCurrency}`
+								? `${convertedAmount.toFixed(2)} ${toCurrency}`
 								: `0.00 ${toCurrency}`}
 						</span>
 					</div>
