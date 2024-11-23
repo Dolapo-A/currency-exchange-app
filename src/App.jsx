@@ -5,7 +5,6 @@ import { currencyFlag } from "./currencyFlag";
 import CurrencyModal from "./components/CurrencyModal";
 
 function App() {
-	<Analytics />;
 	const [amount, setAmount] = useState("");
 	const [fromCurrency, setFromCurrency] = useState("USD");
 	const [toCurrency, setToCurrency] = useState("USD");
@@ -93,6 +92,7 @@ function App() {
 
 	return (
 		<div className="flex flex-col min-h-screen">
+			<Analytics />
 			{/* Error Banner */}
 			{connectionError && (
 				<div className="fixed inset-x-0 top-0 bg-red-500 text-white p-3 text-center z-50">
