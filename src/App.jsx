@@ -1,9 +1,11 @@
+import { Analytics } from "@vercel/analytics/react";
 import { useState, useEffect } from "react";
 import { ChevronDownIcon, ArrowsUpDownIcon } from "@heroicons/react/24/outline";
 import { currencyFlag } from "./currencyFlag";
 import CurrencyModal from "./components/CurrencyModal";
 
 function App() {
+	<Analytics />;
 	const [amount, setAmount] = useState("");
 	const [fromCurrency, setFromCurrency] = useState("USD");
 	const [toCurrency, setToCurrency] = useState("USD");
