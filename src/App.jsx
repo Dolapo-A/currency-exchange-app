@@ -75,7 +75,6 @@ function App() {
 	const toRate = currencies[toCurrency]?.rate;
 	const conversionRate = toRate / fromRate;
 
-
 	const LoadingButton = () => (
 		<div className="flex items-center gap-2 bg-gray-50 px-3 py-2 rounded-full animate-pulse">
 			<div className="w-7 h-5 bg-gray-200 rounded"></div>
@@ -208,7 +207,9 @@ function App() {
 							)}
 							<span className="text-2xl text-gray-400">
 								{convertedAmount
-									? `${convertedAmount.toFixed(2)} ${toCurrency}`
+									? `${convertedAmount
+											.toFixed(2)
+											.replace(/\B(?=(\d{3})+(?!\d))/g, ",")} ${toCurrency}`
 									: `0.00 ${toCurrency}`}
 							</span>
 						</div>
@@ -225,7 +226,8 @@ function App() {
 						<div className="flex justify-between">
 							<span className="text-gray-600">Exchange Rate</span>
 							<span>
-								{1} {fromCurrency} = {conversionRate? conversionRate.toFixed(2) : "X"}{" "}{toCurrency}
+								{1} {fromCurrency} ={" "}
+								{conversionRate ? conversionRate.toFixed(2) : "X"} {toCurrency}
 							</span>
 						</div>
 					</div>
