@@ -130,7 +130,7 @@ function App() {
 
 				<div className="max-w-lg mx-auto p-4 bg-white flex-grow">
 					{/* Title */}
-					<h1 className="text-2xl font-semibold mb-2">Convert money</h1>
+					<h1 className="text-2xl font-semibold mb-2">Convert Currencies</h1>
 					<p className="text-gray-600 mb-6">
 						Enter amount and select currency to convert to
 					</p>
