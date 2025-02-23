@@ -78,6 +78,7 @@ function CurrencyModal({
 					</div>
 					<div className="mb-4">
 						<input
+							autoFocus
 							type="text"
 							placeholder="Search currencies..."
 							className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
