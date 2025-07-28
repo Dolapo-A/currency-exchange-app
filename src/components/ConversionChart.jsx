@@ -89,6 +89,7 @@ export default function ConversionChart({
 						<Tooltip
 							formatter={(value) => value.toFixed(4)}
 							cursorStyle={{ opacity: 0.1 }}
+							wrapperStyle={{ backgroundColor: "#000" }}
 							labelFormatter={(label) =>
 								`Date: ${new Date(label).toLocaleDateString("en-US", {
 									year: "numeric",
