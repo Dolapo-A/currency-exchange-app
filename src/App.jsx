@@ -10,6 +10,7 @@ import { Toaster, toast } from "react-hot-toast";
 import { useUserLocation } from "./hooks/useUserLocation";
 import { useConversionHistory } from "./hooks/useConversionHistory";
 import ConversionChart from "./components/ConversionChart";
+import formatRate from "./services/rateFormatter";
 
 function App() {
 	const {
@@ -26,7 +27,7 @@ function App() {
 	const [isFromModalOpen, setIsFromModalOpen] = useState(false);
 	const [isToModalOpen, setIsToModalOpen] = useState(false);
 	const [hasSetInitialCurrency, setHasSetInitialCurrency] = useState(false);
-	const [period, setPeriod] = useState(30);
+	const [period, setPeriod] = useState(7);
 
 	const {
 		history,
@@ -242,7 +243,7 @@ function App() {
 									<span className="text-gray-600">Exchange Rate</span>
 									<span>
 										{1} {fromCurrency} ={" "}
-										{conversionRate ? conversionRate.toFixed(4) : "X"}{" "}
+										{conversionRate ? formatRate(conversionRate) : "X"}{" "}
 										{toCurrency}
 									</span>
 								</div>

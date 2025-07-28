@@ -11,6 +11,7 @@ import {
 } from "recharts";
 import LoadingComponent from "./LoadingComponent";
 import PeriodFilter from "./PeriodFilter";
+import formatRate from "../services/rateFormatter";
 
 export default function ConversionChart({
 	data,
@@ -54,7 +55,7 @@ export default function ConversionChart({
 				</h1>
 			</div>
 			<h3 className="text-base font-semibold mb-2 text-gray-500">
-				{`1 ${base} = ${conversionRate.toFixed(4)} ${quote} (Last ${
+				{`1 ${base} = ${formatRate(conversionRate)} ${quote} (Last ${
 					data.length
 				} Days)`}
 			</h3>
@@ -82,7 +83,7 @@ export default function ConversionChart({
 						/>
 						<YAxis
 							domain={["auto", "auto"]}
-							tickFormatter={(v) => v.toFixed(4)}
+							tickFormatter={(v) => formatRate(v)}
 							width={70}
 						/>
 						<Tooltip
