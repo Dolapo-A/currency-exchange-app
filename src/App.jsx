@@ -11,6 +11,7 @@ import { useUserLocation } from "./hooks/useUserLocation";
 import { useConversionHistory } from "./hooks/useConversionHistory";
 import ConversionChart from "./components/ConversionChart";
 import formatRate from "./services/rateFormatter";
+import BottomAd from "./components/BottomAd";
 
 function App() {
 	const {
@@ -283,6 +284,7 @@ function App() {
 
 				{/* Footer */}
 				<footer className="bg-slate-100 text-center py-4">
+					<BottomAd />
 					<script
 						async
 						src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2268924820751234"
