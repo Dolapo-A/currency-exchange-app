@@ -282,7 +282,7 @@ function App() {
 				</div>
 
 				{/* Footer */}
-				<footer className="bg-gray-100 text-center py-4">
+				{/* <footer className="bg-gray-100 text-center py-4">
 					<p className="text-sm">Developed by Dolapo Araoye</p>
 					<div className="flex justify-center space-x-4 mt-2">
 						<a
@@ -302,7 +302,7 @@ function App() {
 							LinkedIn
 						</a>
 					</div>
-				</footer>
+				</footer> */}
 			</div>
 		</>
 	);
