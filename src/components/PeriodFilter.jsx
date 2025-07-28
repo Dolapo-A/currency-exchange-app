@@ -14,7 +14,7 @@ function PeriodFilter({ value, onchange }) {
 			{options.map((option) => (
 				<button
 					key={option.value}
-					className={`px-4 py-1 rounded-2xl lg:text-base text-sm border transition-colors duration-200 ${
+					className={`px-2 py-1 rounded-2xl lg:text-base text-sm border transition-colors duration-200 ${
 						value === option.value
 							? "bg-blue-600 text-white"
 							: "bg-slate-200 hover:bg-slate-300"
