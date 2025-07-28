@@ -34,7 +34,6 @@ function App() {
 		isLoading: isLoadingHistory,
 	} = useConversionHistory(fromCurrency, toCurrency, period);
 
-
 	useEffect(() => {
 		if (!amount || amount <= 0 || fromCurrency === toCurrency) {
 			setConvertedAmount(amount ? Number(amount) : null);
@@ -268,7 +267,7 @@ function App() {
 						</div>
 					</div>
 
-					<div className="bg-slate-100 rounded-2xl flex justify-center">
+					<div className="bg-slate-100 rounded-2xl h-full flex justify-center overflow-hidden">
 						<ConversionChart
 							data={history.data}
 							base={history.base}
