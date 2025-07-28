@@ -142,7 +142,7 @@ function App() {
 						<div className="max-w-lg mx-auto">
 							{/* Title */}
 							<h1 className="text-2xl font-semibold mb-2">
-								Compare Currencies
+								Compare Different Currency Rates
 							</h1>
 							<p className="text-gray-600 mb-6">
 								Enter amount and select currency to convert to

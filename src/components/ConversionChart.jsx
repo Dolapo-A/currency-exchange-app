@@ -38,12 +38,12 @@ export default function ConversionChart({
 	return (
 		<div className="w-full h-full p-4 flex flex-col">
 			<div className="flex mb-2">
-				<h1 className="text-2xl font-semibold">
+				<h1 className="text-xl font-semibold">
 					{`Rates from ${new Date(data[0].date).toLocaleDateString("en-US", {
 						year: "numeric",
 						month: "short",
 						day: "numeric",
-					})} ― ${new Date(data[data.length - 1].date).toLocaleDateString(
+					})}  ‒ ${new Date(data[data.length - 1].date).toLocaleDateString(
 						"en-US",
 						{
 							year: "numeric",
@@ -60,7 +60,7 @@ export default function ConversionChart({
 			</h3>
 			<PeriodFilter value={period} onchange={setPeriod} />
 
-			<div className="flex-1 min-h-0">
+			<div className="flex-1 min-h-96">
 				<ResponsiveContainer width="100%" height="100%">
 					<AreaChart data={data}>
 						<defs>
