@@ -10,7 +10,7 @@ export function useFetchCurrencies() {
 		queryKey: ["currencies"],
 		queryFn: fetchCurrencies,
         staleTime: 120000,
-        refetchInterval: 3600000,
+        refetchInterval: 360000,
 		retry: true,
 	});
 
