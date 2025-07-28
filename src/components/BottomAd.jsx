@@ -1,15 +1,17 @@
-import { useEffect, useRef } from 'react';
+/* eslint-disable react/prop-types */
+import { useEffect } from 'react';
 
-export default function BottomAd() {
-  const adRef = useRef(null);
-
+const BottomAd = ({ 
+  client = "ca-pub-2268924820751234", 
+  slot = "6876141711", 
+  format = "auto",
+  responsive = true 
+}) => {
   useEffect(() => {
     try {
-      if (window.adsbygoogle && adRef.current) {
-        (window.adsbygoogle = window.adsbygoogle || []).push({});
-      }
-    } catch (e) {
-      console.error('AdSense error:', e);
+      (window.adsbygoogle = window.adsbygoogle || []).push({});
+    } catch (err) {
+      console.error('AdSense error:', err);
     }
   }, []);
 
@@ -17,11 +19,12 @@ export default function BottomAd() {
     <ins
       className="adsbygoogle"
       style={{ display: 'block' }}
-      data-ad-client="ca-pub-2268924820751234"
-      data-ad-slot="6876141711"
-      data-ad-format="auto"
-      data-full-width-responsive="true"
-      ref={adRef}
+      data-ad-client={client}
+      data-ad-slot={slot}
+      data-ad-format={format}
+      data-full-width-responsive={responsive.toString()}
     />
   );
-}
+};
+
+export default BottomAd;
