@@ -10,11 +10,11 @@ function PeriodFilter({ value, onchange }) {
 	];
 
 	return (
-		<div className="flex gap-2 mb-4">
+		<div className="flex lg:gap-2 gap-1 mb-4">
 			{options.map((option) => (
 				<button
 					key={option.value}
-					className={`lg:px-4 px-2 py-1 rounded-2xl lg:text-base text-sm border transition-colors duration-200 ${
+					className={`lg:px-4 px-1 py-1 rounded-2xl lg:text-base text-sm border transition-colors duration-200 ${
 						value === option.value
 							? "bg-blue-600 text-white"
 							: "bg-slate-200 hover:bg-slate-300"

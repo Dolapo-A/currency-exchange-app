@@ -138,7 +138,7 @@ function App() {
 					</div>
 				</nav>
 
-				<div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-4 px-6">
+				<div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-4 lg:px-6 px-4">
 					<div className="p-4 flex-grow bg-slate-100 rounded-2xl">
 						<div className="max-w-lg mx-auto">
 							{/* Title */}
