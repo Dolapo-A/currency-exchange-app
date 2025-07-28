@@ -283,6 +283,11 @@ function App() {
 
 				{/* Footer */}
 				<footer className="bg-slate-100 text-center py-4">
+					<script
+						async
+						src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2268924820751234"
+						crossOrigin="anonymous"
+					></script>
 					{/* <p className="text-sm">Developed by Dolapo Araoye</p>
 					<div className="flex justify-center space-x-4 mt-2">
 						<a
