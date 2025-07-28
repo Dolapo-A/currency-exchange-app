@@ -282,8 +282,8 @@ function App() {
 				</div>
 
 				{/* Footer */}
-				{/* <footer className="bg-gray-100 text-center py-4">
-					<p className="text-sm">Developed by Dolapo Araoye</p>
+				<footer className="bg-slate-100 text-center py-4">
+					{/* <p className="text-sm">Developed by Dolapo Araoye</p>
 					<div className="flex justify-center space-x-4 mt-2">
 						<a
 							href="https://github.com/Dolapo-A"
@@ -301,8 +301,8 @@ function App() {
 						>
 							LinkedIn
 						</a>
-					</div>
-				</footer> */}
+					</div> */}
+				</footer>
 			</div>
 		</>
 	);
