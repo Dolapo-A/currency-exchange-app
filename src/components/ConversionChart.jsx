@@ -61,7 +61,7 @@ export default function ConversionChart({
 			</h3>
 			<PeriodFilter value={period} onchange={setPeriod} />
 
-			<div className="flex-1 min-h-96">
+			<div className="flex-1 min-h-[500px] lg:min-h-96">
 				<ResponsiveContainer width="100%" height="100%">
 					<AreaChart data={data}>
 						<defs>
