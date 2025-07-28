@@ -19,3 +19,15 @@ export async function convertCurrencyApi(fromCurrency, toCurrency, amount) {
 	const data = await response.json();
 	return data.result; // Assuming the result is in the 'result' field
 }
+
+export async function getconversionHistoryApi(currencyA, currencyB, period) {
+	const response = await fetch(
+		`https://currency-exchange-api-eight.vercel.app/api/history?currencyA=${currencyA}&currencyB=${currencyB}&period=${period}`
+	);
+
+	if (!response.ok) {
+		throw new Error(`HTTP error! status: ${response.status}`);
+	}
+	const data = await response.json();
+	return data;
+}

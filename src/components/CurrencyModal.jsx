@@ -64,7 +64,7 @@ function CurrencyModal({
 	if (!isOpen) return null;
 
 	return (
-		<div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+		<div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
 			<div className="bg-white rounded-2xl w-[90%] max-w-md max-h-[70vh] flex flex-col overflow-hidden">
 				<div className="sticky top-0 bg-white z-10 px-4 py-2 rounded-t-2xl">
 					<div className="flex justify-between items-center mb-4">

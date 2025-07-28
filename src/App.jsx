@@ -8,6 +8,8 @@ import { currencyFlag } from "./currencyFlag";
 import CurrencyModal from "./components/CurrencyModal";
 import { Toaster, toast } from "react-hot-toast";
 import { useUserLocation } from "./hooks/useUserLocation";
+import { useConversionHistory } from "./hooks/useConversionHistory";
+import ConversionChart from "./components/ConversionChart";
 
 function App() {
 	const {
@@ -24,6 +26,14 @@ function App() {
 	const [isFromModalOpen, setIsFromModalOpen] = useState(false);
 	const [isToModalOpen, setIsToModalOpen] = useState(false);
 	const [hasSetInitialCurrency, setHasSetInitialCurrency] = useState(false);
+	const [period, setPeriod] = useState(30);
+
+	const {
+		history,
+		queryError: histroyError,
+		isLoading: isLoadingHistory,
+	} = useConversionHistory(fromCurrency, toCurrency, period);
+
 
 	useEffect(() => {
 		if (!amount || amount <= 0 || fromCurrency === toCurrency) {
@@ -114,8 +124,8 @@ function App() {
 
 			<div className="flex flex-col min-h-screen">
 				<Analytics />
-				{/* Error Banner
-				{queryError ? <Toaster /> : null} */}
+				{/* Error Banner */}
+				{queryError ? <Toaster /> : null}
 
 				{/* Add Navigation Bar */}
 				<nav className="w-full bg-white border-b border-gray-200 mb-4">
@@ -128,126 +138,147 @@ function App() {
 					</div>
 				</nav>
 
-				<div className="max-w-lg mx-auto p-4 bg-white flex-grow">
-					{/* Title */}
-					<h1 className="text-2xl font-semibold mb-2">Convert Currencies</h1>
-					<p className="text-gray-600 mb-6">
-						Enter amount and select currency to convert to
-					</p>
+				<div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-4 px-6">
+					<div className="p-4 flex-grow bg-slate-100 rounded-2xl">
+						<div className="max-w-lg mx-auto">
+							{/* Title */}
+							<h1 className="text-2xl font-semibold mb-2">
+								Compare Currencies
+							</h1>
+							<p className="text-gray-600 mb-6">
+								Enter amount and select currency to convert to
+							</p>
 
-					{/* Amount Input Section */}
-					<div className="mb-4">
-						<label className="block text-gray-600 mb-2">Amount</label>
-						<div className="p-4 rounded-2xl bg-white border border-gray-200 flex justify-between items-center">
-							<div className="flex items-center gap-2">
-								<button
-									className="flex items-center gap-2 bg-gray-50 px-3 py-2 rounded-full"
-									onClick={() => setIsFromModalOpen(true)}
-								>
-									<img
-										src={`/flags/${currencyFlag[
-											fromCurrency
-										]?.toLowerCase()}.png`}
-										alt={fromCurrency}
-										className="w-7 h-5 object-cover border border-gray-300 shadow-sm rounded"
-										onError={(e) => {
-											e.target.src = "/flags/default-flag.png";
-										}}
+							{/* Amount Input Section */}
+							<div className="mb-4">
+								<label className="block text-gray-600 mb-2">Amount</label>
+								<div className="p-4 rounded-2xl bg-white border border-gray-200 flex justify-between items-center">
+									<div className="flex items-center gap-2">
+										<button
+											className="flex items-center gap-2 bg-gray-50 px-3 py-2 rounded-full"
+											onClick={() => setIsFromModalOpen(true)}
+										>
+											<img
+												src={`/flags/${currencyFlag[
+													fromCurrency
+												]?.toLowerCase()}.png`}
+												alt={fromCurrency}
+												className="w-7 h-5 object-cover border border-gray-300 shadow-sm rounded"
+												onError={(e) => {
+													e.target.src = "/flags/default-flag.png";
+												}}
+											/>
+											<span>{fromCurrency}</span>
+											<ChevronDownIcon className="w-4 h-4 text-gray-400" />
+										</button>
+									</div>
+									<input
+										type="number"
+										min="0"
+										value={amount}
+										onChange={(e) => setAmount(e.target.value)}
+										className="text-2xl text-right w-32 focus:outline-none"
+										placeholder="0.00"
 									/>
-									<span>{fromCurrency}</span>
-									<ChevronDownIcon className="w-4 h-4 text-gray-400" />
+								</div>
+							</div>
+
+							{/* Swap Button */}
+							<div className="flex justify-center -my-2 relative">
+								<button
+									onClick={handleSwapCurrencies}
+									className="bg-white border border-gray-200 rounded-full p-2 hover:bg-gray-50 transition-colors"
+								>
+									<ArrowsUpDownIcon className="w-5 h-5 text-gray-400" />
 								</button>
 							</div>
-							<input
-								type="number"
-								min="0"
-								value={amount}
-								onChange={(e) => setAmount(e.target.value)}
-								className="text-2xl text-right w-32 focus:outline-none"
-								placeholder="0.00"
+
+							{/* Amount to Receive */}
+							<div className="mb-6">
+								<label className="block text-gray-600 mb-2">
+									Converted Amount
+								</label>
+								<div className="p-4 rounded-2xl bg-white border border-gray-200 flex justify-between items-center">
+									{isLoadingLocation || isLoadingCurrencies ? (
+										<LoadingButton />
+									) : (
+										<button
+											className="flex items-center gap-2 bg-gray-50 px-3 py-2 rounded-full"
+											onClick={() => setIsToModalOpen(true)}
+										>
+											<img
+												src={`/flags/${currencyFlag[
+													toCurrency
+												]?.toLowerCase()}.png`}
+												alt={toCurrency}
+												className="w-7 h-5 object-cover border border-gray-300 shadow-sm rounded"
+												onError={(e) => {
+													e.target.src = "/flags/default-flag.png";
+													e.target.onerror = null;
+												}}
+											/>
+											<span>{toCurrency}</span>
+											<ChevronDownIcon className="w-4 h-4 text-gray-400" />
+										</button>
+									)}
+									<span className="text-2xl text-gray-400">
+										{convertedAmount
+											? `${convertedAmount
+													.toFixed(2)
+													.replace(/\B(?=(\d{3})+(?!\d))/g, ",")} ${toCurrency}`
+											: `0.00 ${toCurrency}`}
+									</span>
+								</div>
+							</div>
+
+							{/* Conversion Details */}
+							<div className="bg-gray-50 rounded-2xl p-4 mb-6 space-y-3">
+								<div className="flex justify-between">
+									<span className="text-gray-600">Converting</span>
+									<span>
+										{amount || 0} {fromCurrency}
+									</span>
+								</div>
+								<div className="flex justify-between">
+									<span className="text-gray-600">Exchange Rate</span>
+									<span>
+										{1} {fromCurrency} ={" "}
+										{conversionRate ? conversionRate.toFixed(4) : "X"}{" "}
+										{toCurrency}
+									</span>
+								</div>
+							</div>
+
+							{/* Add Currency Modals */}
+							<CurrencyModal
+								isOpen={isFromModalOpen}
+								onClose={() => setIsFromModalOpen(false)}
+								onSelect={setFromCurrency}
+								currencies={currencies}
+								selectedCurrency={fromCurrency}
+							/>
+
+							<CurrencyModal
+								isOpen={isToModalOpen}
+								onClose={() => setIsToModalOpen(false)}
+								onSelect={setToCurrency}
+								currencies={currencies}
+								selectedCurrency={toCurrency}
 							/>
 						</div>
 					</div>
 
-					{/* Swap Button */}
-					<div className="flex justify-center -my-2 relative">
-						<button
-							onClick={handleSwapCurrencies}
-							className="bg-white border border-gray-200 rounded-full p-2 hover:bg-gray-50 transition-colors"
-						>
-							<ArrowsUpDownIcon className="w-5 h-5 text-gray-400" />
-						</button>
+					<div className="bg-slate-100 rounded-2xl flex justify-center">
+						<ConversionChart
+							data={history.data}
+							base={history.base}
+							quote={history.quote}
+							conversionRate={conversionRate}
+							isLoading={isLoadingHistory}
+							period={period}
+							setPeriod={setPeriod}
+						/>
 					</div>
-
-					{/* Amount to Receive */}
-					<div className="mb-6">
-						<label className="block text-gray-600 mb-2">Converted Amount</label>
-						<div className="p-4 rounded-2xl bg-white border border-gray-200 flex justify-between items-center">
-							{isLoadingLocation || isLoadingCurrencies ? (
-								<LoadingButton />
-							) : (
-								<button
-									className="flex items-center gap-2 bg-gray-50 px-3 py-2 rounded-full"
-									onClick={() => setIsToModalOpen(true)}
-								>
-									<img
-										src={`/flags/${currencyFlag[
-											toCurrency
-										]?.toLowerCase()}.png`}
-										alt={toCurrency}
-										className="w-7 h-5 object-cover border border-gray-300 shadow-sm rounded"
-										onError={(e) => {
-											e.target.src = "/flags/default-flag.png";
-											e.target.onerror = null;
-										}}
-									/>
-									<span>{toCurrency}</span>
-									<ChevronDownIcon className="w-4 h-4 text-gray-400" />
-								</button>
-							)}
-							<span className="text-2xl text-gray-400">
-								{convertedAmount
-									? `${convertedAmount
-											.toFixed(2)
-											.replace(/\B(?=(\d{3})+(?!\d))/g, ",")} ${toCurrency}`
-									: `0.00 ${toCurrency}`}
-							</span>
-						</div>
-					</div>
-
-					{/* Conversion Details */}
-					<div className="bg-gray-50 rounded-2xl p-4 mb-6 space-y-3">
-						<div className="flex justify-between">
-							<span className="text-gray-600">Converting</span>
-							<span>
-								{amount || 0} {fromCurrency}
-							</span>
-						</div>
-						<div className="flex justify-between">
-							<span className="text-gray-600">Exchange Rate</span>
-							<span>
-								{1} {fromCurrency} ={" "}
-								{conversionRate ? conversionRate.toFixed(2) : "X"} {toCurrency}
-							</span>
-						</div>
-					</div>
-
-					{/* Add Currency Modals */}
-					<CurrencyModal
-						isOpen={isFromModalOpen}
-						onClose={() => setIsFromModalOpen(false)}
-						onSelect={setFromCurrency}
-						currencies={currencies}
-						selectedCurrency={fromCurrency}
-					/>
-
-					<CurrencyModal
-						isOpen={isToModalOpen}
-						onClose={() => setIsToModalOpen(false)}
-						onSelect={setToCurrency}
-						currencies={currencies}
-						selectedCurrency={toCurrency}
-					/>
 				</div>
 
 				{/* Footer */}
