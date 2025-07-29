@@ -35,6 +35,8 @@ export default function ConversionChart({
 				<span className="text-xl">Graphy</span> is unavailable at the moment 🥲
 			</h2>
 		);
+		console.log("Here's your history: "+data[data]);
+
 
 	return (
 		<div className="w-full h-full p-4 flex flex-col">
@@ -59,7 +61,11 @@ export default function ConversionChart({
 					data.length
 				} Days)`}
 			</h3>
-			<PeriodFilter value={period} onchange={setPeriod} />
+			{period >= 7 ? (
+				<div className="flex gap-2 mb-4">
+					<PeriodFilter value={period} onchange={setPeriod} />
+				</div>
+			) : null}
 
 			<div className="flex-1 min-h-[450px] lg:min-h-96">
 				<ResponsiveContainer width="100%" height="100%">

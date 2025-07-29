@@ -99,8 +99,10 @@ function App() {
 		setToCurrency(fromCurrency);
 	};
 
+
 	return (
 		<>
+			
 			<ReactQueryDevtools initialIsOpen={true} />
 			<Toaster
 				position="top-center"
