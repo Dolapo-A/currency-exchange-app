@@ -22,52 +22,54 @@ export default function ConversionChart({
 	period,
 	setPeriod,
 }) {
-	if (isLoading)
-		return (
-			<div className="content-center">
-				<LoadingComponent />
-			</div>
-		);
+	// if (isLoading)
+	// 	return (
+	// 		<div className="content-center">
+	// 			<LoadingComponent />
+	// 		</div>
+	// 	);
 	if (!data || data.length === 0)
 		return (
 			<h2 className="content-center">
-				{" "}
-				<span className="text-xl"></span> 
+				<LoadingComponent />
 			</h2>
 		);
-		// console.log("Here's your history: "+data[data]);
-
+	// console.log("Here's your history: "+data[data]);
 
 	return (
-		<div className="w-full h-full p-4 flex flex-col">
-			<div className="flex mb-2">
-				<h1 className="text-xl font-semibold">
-					{`Rates from ${new Date(data[0].date).toLocaleDateString("en-US", {
-						year: "numeric",
-						month: "short",
-						day: "numeric",
-					})}  ‒ ${new Date(data[data.length - 1].date).toLocaleDateString(
-						"en-US",
-						{
+		<div className="w-full h-full flex flex-col">
+			<div className="p-4 pb-0">
+				<div className="flex mb-2">
+					<h1 className="text-xl font-semibold">
+						{`Rates from ${new Date(data[0].date).toLocaleDateString("en-US", {
 							year: "numeric",
 							month: "short",
 							day: "numeric",
-						}
-					)}`}
-				</h1>
-			</div>
-			<h3 className="text-base font-semibold mb-2 text-gray-500">
-				{`1 ${base} = ${formatRate(conversionRate)} ${quote} (Last ${
-					data.length
-				} Days)`}
-			</h3>
-			{period >= 7 ? (
-				<div className="flex gap-2 mb-4">
-					<PeriodFilter value={period} onchange={setPeriod} />
+						})}  ‒ ${new Date(data[data.length - 1].date).toLocaleDateString(
+							"en-US",
+							{
+								year: "numeric",
+								month: "short",
+								day: "numeric",
+							}
+						)}`}
+					</h1>
 				</div>
-			) : null}
+				<h3 className="text-base font-semibold mb-2 text-gray-500">
+					{`1 ${base} = ${formatRate(conversionRate)} ${quote} (Last ${
+						data.length
+					} Days)`}
+				</h3>
+				{period >= 6 ? (
+					<div className="flex gap-2 mb-4">
+						<PeriodFilter value={period} onchange={setPeriod} />
+					</div>
+				) : (
+					<></>
+				)}
+			</div>
 
-			<div className="flex-1 min-h-[450px] lg:min-h-96">
+			<div className="flex-1 min-h-[450px] lg:min-h-96 pr-4 pb-4">
 				<ResponsiveContainer width="100%" height="100%">
 					<AreaChart data={data}>
 						<defs>

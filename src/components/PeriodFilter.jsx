@@ -2,12 +2,12 @@
 function PeriodFilter({ value, onchange }) {
 	if (!value || !onchange) return null;
 	const options = [
-		{ label: "7 days", value: 7 },
+		{ label: "7 days", value: 6 },
 		{ label: "14 days", value: 14 },
 		{ label: "25 days", value: 25 },
-		{ label: "3M", value: 90 },
-		{ label: "6M", value: 180 },
-		{ label: "1Y", value: 365 },
+		// { label: "3M", value: 90 },
+		// { label: "6M", value: 180 },
+		// { label: "1Y", value: 365 },
 	];
 
 	return (
