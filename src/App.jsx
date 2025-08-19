@@ -28,7 +28,7 @@ function App() {
 	const [isFromModalOpen, setIsFromModalOpen] = useState(false);
 	const [isToModalOpen, setIsToModalOpen] = useState(false);
 	const [hasSetInitialCurrency, setHasSetInitialCurrency] = useState(false);
-	const [period, setPeriod] = useState(7);
+	const [period, setPeriod] = useState(6);
 
 	const {
 		history,
