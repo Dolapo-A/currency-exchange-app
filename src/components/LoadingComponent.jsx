@@ -1,11 +1,18 @@
+import Lottie from 'lottie-react'
+import graphLoader from '../assets/lotties/Financial_Graph_Loader.json'
 
 function LoadingComponent() {
     return (
-        <div>
-            <div className="flex justify-center items-center">
-                <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-blue-500"></div>
-            </div>
-        </div>
+        <Lottie
+            animationData={graphLoader}
+            loop={true}
+            autoplay={true}
+            className="w-80 h-80 mx-auto"
+            style={{ maxWidth: '100%', maxHeight: '100%' }}
+            rendererSettings={{
+                preserveAspectRatio: 'xMidYMid slice',
+            }}
+        />
     )
 }
 

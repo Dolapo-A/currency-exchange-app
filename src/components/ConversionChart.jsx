@@ -32,10 +32,10 @@ export default function ConversionChart({
 		return (
 			<h2 className="content-center">
 				{" "}
-				<span className="text-xl">Graphy</span> is unavailable at the moment 🥲
+				<span className="text-xl"></span> 
 			</h2>
 		);
-		console.log("Here's your history: "+data[data]);
+		// console.log("Here's your history: "+data[data]);
 
 
 	return (
@@ -85,12 +85,13 @@ export default function ConversionChart({
 									month: "short",
 								})
 							}
-							minTickGap={20}
+							fontSize={14}
 						/>
 						<YAxis
 							domain={["auto", "auto"]}
 							tickFormatter={(v) => formatRate(v)}
 							width={70}
+							fontSize={14}
 						/>
 						<Tooltip
 							formatter={(value) => value.toFixed(4)}

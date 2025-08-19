@@ -286,7 +286,7 @@ function App() {
 
 				{/* Footer */}
 				<footer className="bg-slate-100 text-center py-4">
-					<BottomAd />
+					{/* <BottomAd /> */}
 
 					{/* <p className="text-sm">Developed by Dolapo Araoye</p>
 					<div className="flex justify-center space-x-4 mt-2">
