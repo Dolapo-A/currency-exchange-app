@@ -158,7 +158,7 @@ function App() {
 								<div className="p-4 rounded-2xl bg-white border border-gray-200 flex justify-between items-center">
 									<div className="flex items-center gap-2">
 										<button
-											className="flex items-center gap-2 bg-gray-50 px-3 py-2 rounded-full"
+											className="flex items-center gap-2 bg-gray-50 px-3 py-2 rounded-full hover:bg-slate-100 transition-colors"
 											onClick={() => setIsFromModalOpen(true)}
 										>
 											<img
@@ -206,7 +206,7 @@ function App() {
 										<LoadingButton />
 									) : (
 										<button
-											className="flex items-center gap-2 bg-gray-50 px-3 py-2 rounded-full"
+											className="flex items-center gap-2 bg-gray-50 px-3 py-2 rounded-full hover:bg-slate-100 transition-colors"
 											onClick={() => setIsToModalOpen(true)}
 										>
 											<img
@@ -285,10 +285,10 @@ function App() {
 				</div>
 
 				{/* Footer */}
-				<footer className="bg-slate-100 text-center py-4">
-					{/* <BottomAd /> */}
+				{/* <footer className="bg-slate-100 text-center py-4">
+					<BottomAd />
 
-					{/* <p className="text-sm">Developed by Dolapo Araoye</p>
+					<p className="text-sm">Developed by Dolapo Araoye</p>
 					<div className="flex justify-center space-x-4 mt-2">
 						<a
 							href="https://github.com/Dolapo-A"
@@ -306,8 +306,8 @@ function App() {
 						>
 							LinkedIn
 						</a>
-					</div> */}
-				</footer>
+					</div>
+				</footer> */}
 			</div>
 		</>
 	);
