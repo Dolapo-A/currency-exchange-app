@@ -84,7 +84,7 @@ export default function ConversionChart({
 							tickFormatter={(d) =>
 								new Date(d).toLocaleDateString("en-GB", {
 									day: "2-digit",
-									month: "short",
+									month: "2-digit",
 								})
 							}
 							fontSize={14}
@@ -92,7 +92,7 @@ export default function ConversionChart({
 						<YAxis
 							domain={["auto", "auto"]}
 							tickFormatter={(v) => formatRate(v)}
-							width={70}
+							width={65}
 							fontSize={14}
 						/>
 						<Tooltip
