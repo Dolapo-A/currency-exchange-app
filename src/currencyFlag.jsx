@@ -154,6 +154,7 @@ export const currencyFlag = {
 	WST: "WS",
 	XAF: "CF",
 	XCD: "AG",
+	XCG: "XG",
 	XDR: "IMF",
 	XOF: "BJ",
 	XPF: "PF",
