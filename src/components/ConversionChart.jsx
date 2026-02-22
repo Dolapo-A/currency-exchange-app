@@ -18,7 +18,7 @@ export default function ConversionChart({
 	base,
 	quote,
 	conversionRate,
-	isLoading,
+	// isLoading,
 	period,
 	setPeriod,
 }) {
