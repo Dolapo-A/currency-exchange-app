@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Currency Exchange App is a user-friendly web application designed to facilitate real-time currency conversion. Users can easily convert amounts between different currencies, view exchange rates, and select from a variety of available currencies. The app fetches live data from a currency exchange API, ensuring that users have access to the most accurate and up-to-date information.
+The Ratevo App is a user-friendly web application designed to facilitate real-time currency conversion. Users can easily convert amounts between different currencies, view exchange rates, and select from a variety of available currencies. The app fetches live data from a currency exchange API, ensuring that users have access to the most accurate and up-to-date information.
 
 ## Features
 
