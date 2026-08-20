@@ -6,7 +6,11 @@ export async function fetchCurrencies() {
 	if (!response.ok) {
 		throw new Error("Network response was not ok");
 	}
-	return response.json();
+	// Parse JSON to get the actual data and count currencies reliably
+	// const data = await response.json();
+	// const count = Array.isArray(data) ? data.length : Object.keys(data).length;
+	// console.log("Currency count: " + count);
+	return data;
 } 
 
 export async function convertCurrencyApi(fromCurrency, toCurrency, amount) {
